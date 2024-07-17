@@ -7,7 +7,7 @@ import linkedInLight from "../../assets/linkedin-light.svg";
 import linkedInDark from "../../assets/linkedin-dark.svg";
 import githubLight from "../../assets/github-light.svg";
 import githubDark from "../../assets/github-dark.svg";
-import CV from "../../assets/Hannan Butt Web Developer.pdf";
+import CV from "../../assets/HannanButt-Resume.pdf";
 import { useTheme } from "../../common/ThemeContext";
 function Hero() {
   const { theme, toogleTheme } = useTheme();
