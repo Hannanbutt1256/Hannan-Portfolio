@@ -9,11 +9,13 @@ import githubLight from "../../assets/github-light.svg";
 import githubDark from "../../assets/github-dark.svg";
 import CV from "../../assets/HannanButt-Resume.pdf";
 import { useTheme } from "../../common/ThemeContext";
+
 function Hero() {
   const { theme, toogleTheme } = useTheme();
   const themeIcon = theme === "light" ? sun : moon;
   const linkedinIcon = theme === "light" ? linkedInLight : linkedInDark;
   const githubIcon = theme === "light" ? githubLight : githubDark;
+
   return (
     <section className={styles.container} id="hero">
       <div className={styles.colorModeContainer}>
@@ -43,7 +45,7 @@ function Hero() {
           </a>
         </span>
         <p className={styles.description}>
-          Passionate Computer Science graduate skilled in JavaScript,React,
+          Passionate Computer Science graduate skilled in JavaScript, React,
           ASP.NET, and Python, ready to innovate in web technologies.
         </p>
         <a href={CV} download>
