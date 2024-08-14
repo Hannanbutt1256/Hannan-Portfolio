@@ -9,6 +9,7 @@ import githubLight from "../../assets/github-light.svg";
 import githubDark from "../../assets/github-dark.svg";
 import CV from "../../assets/HannanButt-Resume.pdf";
 import { useTheme } from "../../common/ThemeContext";
+import { SplitText } from "../SplitText/SplitText";
 
 function Hero() {
   const { theme, toogleTheme } = useTheme();
@@ -33,7 +34,9 @@ function Hero() {
       </div>
       <div className={styles.info}>
         <h1>
-          Hannan <br /> Butt
+          <SplitText text="Hannan" className="custom-class" delay={50} />
+          <br />
+          <SplitText text="Butt" className="custom-class" delay={50} />
         </h1>
         <h2>FullStack Developer</h2>
         <span>
