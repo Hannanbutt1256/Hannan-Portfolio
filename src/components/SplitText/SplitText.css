@@ -1,0 +1,11 @@
+.letter {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.split-parent {
+  display: inline;
+  overflow: hidden;
+  font-size: 40px;
+  font-family: "Rubik", sans-serif;
+}
