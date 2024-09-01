@@ -7,7 +7,7 @@ import linkedInLight from "../../assets/linkedin-light.svg";
 import linkedInDark from "../../assets/linkedin-dark.svg";
 import githubLight from "../../assets/github-light.svg";
 import githubDark from "../../assets/github-dark.svg";
-import CV from "../../assets/HannanButt-Resume.pdf";
+import CV from "../../assets/HannanButt-Resume2.pdf";
 import { useTheme } from "../../common/ThemeContext";
 import { SplitText } from "../SplitText/SplitText";
 
