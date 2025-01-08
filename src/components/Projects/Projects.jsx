@@ -4,12 +4,19 @@ import webannotator from "../../assets/webannotator.png";
 import fnd from "../../assets/fnd.png";
 import tbs from "../../assets/tbs.png";
 import tb from "../../assets/tb.png";
+import md from "../../assets/maddev.png";
 
 function Projects() {
   return (
     <section id="projects" className={styles.container}>
       <h1 className="sectionTitle">Projects</h1>
       <div className={styles.projectsContainer}>
+        <ProjectCard
+          src={md}
+          link="https://mad-dev.vercel.app/"
+          h3="MADDEV"
+          p="Tech blog and podcast hub"
+        />
         <ProjectCard
           src={fnd}
           link="https://github.com/Hannanbutt1256/Urde-Fake-News-Detection-System"
