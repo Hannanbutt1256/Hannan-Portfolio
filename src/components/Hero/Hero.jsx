@@ -47,8 +47,9 @@ function Hero() {
           </a>
         </span>
         <p className={styles.description}>
-          Passionate Computer Science graduate skilled in JavaScript, React,
-          ASP.NET, and Python, ready to innovate in web technologies.
+          Passionate Computer Science graduate skilled in JavaScript,
+          TypeScript, React, ASP.NET, and Python, ready to innovate in web
+          technologies.
         </p>
         <a href={CV} download>
           <button className="hover">Resume</button>
