@@ -1,0 +1,211 @@
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(135deg, rgba(20, 20, 20, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    height: 100%;
+    text-align: left;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Animated gradient border */
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 1px;
+    background: linear-gradient(135deg, transparent 40%, var(--primary-color) 50%, transparent 60%);
+    background-size: 300% 300%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.3;
+    transition: opacity 0.3s ease, background-position 0.5s ease;
+}
+
+.card:hover::before {
+    opacity: 1;
+    animation: borderGlow 2s linear infinite;
+}
+
+@keyframes borderGlow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Shine effect on hover */
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+    transform: skewX(-15deg);
+    transition: left 0.6s ease;
+}
+
+.card:hover::after {
+    left: 150%;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+/* Card number indicator */
+.cardNumber {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 4rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.03);
+    line-height: 1;
+    pointer-events: none;
+}
+
+.cardContent {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.card h3 {
+    color: var(--text-primary);
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.card:hover h3 {
+    color: var(--primary-color);
+}
+
+.description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.techStack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.techBadge {
+    background: rgba(43, 150, 212, 0.1);
+    color: var(--accent-color);
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(43, 150, 212, 0.2);
+    transition: all 0.2s ease;
+}
+
+.techBadge:hover {
+    background: rgba(43, 150, 212, 0.2);
+    border-color: var(--primary-color);
+}
+
+.linksContainer {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    z-index: 1;
+}
+
+.iconBtn {
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    opacity: 0.7;
+}
+
+.iconBtn:hover {
+    opacity: 1;
+    background: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(43, 150, 212, 0.3);
+}
+
+/* Featured horizontal card */
+.featured {
+    flex-direction: row;
+    gap: 2rem;
+    padding: 2.5rem;
+}
+
+.featured .cardContent {
+    flex: 1;
+}
+
+.featured h3 {
+    font-size: 1.75rem;
+}
+
+.featured .description {
+    font-size: 1rem;
+    max-width: 600px;
+}
+
+.featured .linksContainer {
+    flex-direction: column;
+    justify-content: center;
+    border-top: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 0;
+    padding-left: 2rem;
+    margin-top: 0;
+}
+
+@media (max-width: 768px) {
+    .featured {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 2rem;
+    }
+
+    .featured .linksContainer {
+        flex-direction: row;
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-left: 0;
+        padding-top: 1.5rem;
+    }
+
+    .featured h3 {
+        font-size: 1.4rem;
+    }
+}

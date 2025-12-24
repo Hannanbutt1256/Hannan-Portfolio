@@ -1,21 +1,14 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext } from "react";
 
 const ThemeContext = createContext();
 export const useTheme = () => useContext(ThemeContext);
-export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(
-    () => localStorage.getItem("theme") || "light"
-  );
-  useEffect(() => {
-    document.body.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
 
-  const toogleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
-  };
+export const ThemeProvider = ({ children }) => {
+  // Enforcing dark mode always
+  const theme = "dark";
+
   return (
-    <ThemeContext.Provider value={{ theme, toogleTheme }}>
+    <ThemeContext.Provider value={{ theme }}>
       {children}
     </ThemeContext.Provider>
   );

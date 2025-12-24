@@ -1,60 +1,57 @@
+import React, { useState } from "react";
 import styles from "./HeroStyles.module.css";
-import heroImg from "../../assets/hero-img.png";
-import sun from "../../assets/sun.svg";
-import moon from "../../assets/moon.svg";
-import linkedInLight from "../../assets/linkedin-light.svg";
-import linkedInDark from "../../assets/linkedin-dark.svg";
-import githubLight from "../../assets/github-light.svg";
-import githubDark from "../../assets/github-dark.svg";
-import CV from "../../assets/HannanButt-Resume1.2.pdf";
-import { useTheme } from "../../common/ThemeContext";
-import { SplitText } from "../SplitText/SplitText";
+import linkedInIcon from "../../assets/linkedin-dark.svg";
+import githubIcon from "../../assets/github-dark.svg";
+import kaggleIcon from "../../assets/kaggle-dark.svg";
+import { portfolioData } from "../../data/portfolio";
+import ResumePreview from "../ResumePreview/ResumePreview";
 
 function Hero() {
-  const { theme, toogleTheme } = useTheme();
-  const themeIcon = theme === "light" ? sun : moon;
-  const linkedinIcon = theme === "light" ? linkedInLight : linkedInDark;
-  const githubIcon = theme === "light" ? githubLight : githubDark;
+  const { hero } = portfolioData;
+  const [showResume, setShowResume] = useState(false);
 
   return (
     <section className={styles.container} id="hero">
-      <div className={styles.colorModeContainer}>
-        <img
-          className={styles.hero}
-          src={heroImg}
-          alt="Profile picture of Hannan Butt"
-        />
-        <img
-          className={styles.colorMode}
-          src={themeIcon}
-          alt="Color mode icon"
-          onClick={toogleTheme}
-        />
-      </div>
       <div className={styles.info}>
-        <h1>
-          <SplitText text="Hannan" className="custom-class" delay={50} />
-          <br />
-          <SplitText text="Butt" className="custom-class" delay={50} />
-        </h1>
-        <h2>FullStack Developer</h2>
-        <span>
-          <a href="https://www.linkedin.com/in/hannan-butt/" target="_blank">
-            <img src={linkedinIcon} alt="LinkedIn Icon" />
+        <h1>{hero.name}</h1>
+        <h2>{hero.role}</h2>
+        <h3 className={styles.subHeadline}>{hero.subHeadline}</h3>
+
+        <div className={styles.socials}>
+          <a href={hero.socialLinks.linkedin} target="_blank" rel="noopener noreferrer">
+            <img src={linkedInIcon} alt="LinkedIn" className={styles.icon} />
           </a>
-          <a href="https://github.com/Hannanbutt1256" target="_blank">
-            <img src={githubIcon} alt="Github Icon" />
+          <a href={hero.socialLinks.github} target="_blank" rel="noopener noreferrer">
+            <img src={githubIcon} alt="Github" className={styles.icon} />
           </a>
-        </span>
-        <p className={styles.description}>
-          Passionate Computer Science graduate skilled in JavaScript,
-          TypeScript, React, ASP.NET, and Python, ready to innovate in web
-          technologies.
-        </p>
-        <a href={CV} download>
-          <button className="hover">Resume</button>
-        </a>
+          <a href={hero.socialLinks.kaggle} target="_blank" rel="noopener noreferrer">
+            <img src={kaggleIcon} alt="Kaggle" className={styles.icon} />
+          </a>
+        </div>
+
+        <p className={styles.description}>{hero.summary}</p>
+
+        <div className={styles.actions}>
+          <button
+            className={`${styles.btn} hover`}
+            onClick={() => setShowResume(true)}
+          >
+            View Resume
+          </button>
+          <a href="#contact">
+            <button className={`${styles.btn} ${styles.btnOutline} hover`}>
+              Contact Me
+            </button>
+          </a>
+        </div>
       </div>
+
+      {showResume && (
+        <ResumePreview
+          resumeLink={hero.resumeLink}
+          onClose={() => setShowResume(false)}
+        />
+      )}
     </section>
   );
 }

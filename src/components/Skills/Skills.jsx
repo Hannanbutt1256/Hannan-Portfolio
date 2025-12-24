@@ -1,35 +1,22 @@
 import styles from "./SkillsStyles.module.css";
-import checkMarkIconDark from "../../assets/checkmark-dark.svg";
-import checkMarkIconLight from "../../assets/checkmark-light.svg";
 import SkillList from "../../common/SkillList";
-import { useTheme } from "../../common/ThemeContext";
+import { portfolioData } from "../../data/portfolio";
 
 export default function Skills() {
-  const { theme } = useTheme();
-  const checkMarkIcon =
-    theme === "light" ? checkMarkIconLight : checkMarkIconDark;
   return (
     <section id="skills" className={styles.container}>
       <h1 className="sectionTitle">Skills</h1>
-      <div className={styles.skillList}>
-        <SkillList src={checkMarkIcon} skill="HTML" />
-        <SkillList src={checkMarkIcon} skill="CSS" />
-        <SkillList src={checkMarkIcon} skill="JavaScript" />
-        <SkillList src={checkMarkIcon} skill="TypeScript" />
-        <SkillList src={checkMarkIcon} skill="React" />
-      </div>
-      <hr />
-      <div className={styles.skillList}>
-        <SkillList src={checkMarkIcon} skill="Python" />
-        <SkillList src={checkMarkIcon} skill="C#" />
-        <SkillList src={checkMarkIcon} skill="PHP" />
-      </div>
-      <hr />
-      <div className={styles.skillList}>
-        <SkillList src={checkMarkIcon} skill="MS SQL" />
-        <SkillList src={checkMarkIcon} skill="ASP.NET" />
-        <SkillList src={checkMarkIcon} skill="NodeJS" />
-        <SkillList src={checkMarkIcon} skill="Git" />
+      <div className={styles.skillsGrid}>
+        {portfolioData.skills.map((category, index) => (
+          <div key={index} className={styles.skillCategory}>
+            <h3>{category.category}</h3>
+            <div className={styles.skillList}>
+              {category.items.map((skill, idx) => (
+                <SkillList key={idx} skill={skill} />
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

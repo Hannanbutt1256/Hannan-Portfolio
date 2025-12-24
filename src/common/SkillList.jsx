@@ -1,8 +1,9 @@
-export default function SkillList({ src, skill }) {
+import styles from "./SkillList.module.css";
+
+export default function SkillList({ skill }) {
   return (
-    <span>
-      <img src={src} alt="Checkmark icon" />
-      <p>{skill}</p>
+    <span className={styles.skillBadge}>
+      {skill}
     </span>
   );
 }

@@ -7,73 +7,69 @@
 form {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 1.25rem;
+  max-width: 560px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 textarea,
 input:not([type="submit"]) {
-  height: 50px;
-  padding-left: 16px;
-  width: 250px;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-primary);
+  font-family: 'Satoshi', sans-serif;
+  font-size: 1rem;
+  transition: all 0.25s ease;
 }
 
 textarea {
-  padding-top: 16px;
-  resize: none;
-  height: 250px;
+  min-height: 140px;
+  resize: vertical;
 }
 
-input,
-textarea {
-  border-radius: 20px;
-  border: #888 1px solid;
-  box-sizing: border-box;
-  justify-self: center;
-  background-color: var(--background-color);
-  color: var(--form-text-color);
+textarea:focus,
+input:not([type="submit"]):focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background: rgba(43, 150, 212, 0.05);
 }
 
 ::placeholder {
-  color: var(--form-text-color);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 input[type="submit"] {
-  background-color: var(--btn-color);
-  color: var(--btn-text-color);
+  background-color: var(--primary-color);
+  color: #fff;
   border: none;
-  border-radius: 20px;
-  width: 126px;
-  height: 50px;
-  font-size: 20px;
-  font-weight: bold;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  transition: box-shadow 200ms ease-in-out, transform 200ms ease-in-out;
-  margin: auto;
+  border-radius: 8px;
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(43, 150, 212, 0.25);
+  margin-top: 0.5rem;
+  width: fit-content;
+  align-self: center;
 }
 
 input[type="submit"]:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(43, 150, 212, 0.35);
 }
 
 input[type="submit"]:active {
-  transform: translateY(2px);
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+  transform: translateY(0);
 }
 
-@media (width >= 800px) {
-  textarea,
-  input:not([type="submit"]) {
-    width: 600px;
-    font-size: 20px;
-  }
-  form {
-    gap: 40px;
-  }
-}
-
-@media (width >= 1400px) {
-  textarea,
-  input:not([type="submit"]) {
-    width: 800px;
-  }
+.error {
+  color: #f87171;
+  font-size: 0.875rem;
+  text-align: left;
+  margin-top: 0.25rem;
 }
