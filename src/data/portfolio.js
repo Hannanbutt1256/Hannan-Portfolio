@@ -28,6 +28,7 @@ export const portfolioData = {
         },
         {
             title: "Data-Driven Analysis of Pakistan Real Estate",
+            isFeatured: true,
             techUsed: ["Python", "Pandas", "Numpy"],
             description:
                 "Conducted EDA on real estate datasets to uncover market trends. Cleaned and processed large datasets; visualized price trends and distributions.",
