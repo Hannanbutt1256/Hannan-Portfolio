@@ -135,8 +135,8 @@ MIT License - feel free to use this template for your own portfolio!
 ## 👤 Author
 
 **Hannan Butt**
-- GitHub: [@HannanButt](https://github.com/HannanButt)
-- LinkedIn: [hannanbutt](https://linkedin.com/in/hannanbutt)
+- GitHub: [@HannanButt](https://github.com/Hannanbutt1256/)
+- LinkedIn: [hannanbutt](https://linkedin.com/in/hannan-butt/)
 - Email: hannanbutt.dev@gmail.com
 
 ---
