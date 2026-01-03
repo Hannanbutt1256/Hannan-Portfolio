@@ -13,7 +13,7 @@ export const portfolioData = {
             linkedin: "https://www.linkedin.com/in/hannanb/",
             kaggle: "https://www.kaggle.com/hannanbuttdev",
         },
-        resumeLink: "/HannanButt_Updated_Resume.pdf", // Assuming file is in public folder
+        resumeLink: "/hannan-butt.pdf", // Assuming file is in public folder
     },
     projects: [
         {
