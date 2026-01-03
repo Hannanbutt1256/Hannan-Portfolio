@@ -10,7 +10,7 @@ export const portfolioData = {
             "Passionate Computer Science graduate focused on machine learning using Python and AI-driven automation. Experienced in building responsive web applications using React and TypeScript. Passionate about creating efficient solutions through AI and modern frontend technologies.",
         socialLinks: {
             github: "https://github.com/Hannanbutt1256/",
-            linkedin: "https://www.linkedin.com/in/hannan-butt/",
+            linkedin: "https://www.linkedin.com/in/hannanb/",
             kaggle: "https://www.kaggle.com/hannanbuttdev",
         },
         resumeLink: "/HannanButt_Updated_Resume.pdf", // Assuming file is in public folder
