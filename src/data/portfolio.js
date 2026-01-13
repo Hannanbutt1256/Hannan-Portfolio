@@ -7,7 +7,7 @@ export const portfolioData = {
         email: "hannanbutt.dev@gmail.com",
         phone: "+92-3206290016",
         summary:
-            "Passionate Computer Science graduate focused on machine learning using Python and AI-driven automation. Experienced in building responsive web applications using React and TypeScript. Passionate about creating efficient solutions through AI and modern frontend technologies.",
+            "I’m an AI Engineer and Frontend Developer focused on machine learning with Python and AI-driven automation. I design and build responsive web applications using React and TypeScript, aligning modern frontend development with practical AI to deliver efficient, scalable solutions.",
         socialLinks: {
             github: "https://github.com/Hannanbutt1256/",
             linkedin: "https://www.linkedin.com/in/hannanb/",

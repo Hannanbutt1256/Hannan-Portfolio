@@ -13,7 +13,7 @@ function Hero() {
   return (
     <section className={styles.container} id="hero">
       <div className={styles.info}>
-        <h1>{hero.name}</h1>
+        <h1>Hi, I’m <span className={styles.gradientText}>{hero.name}</span> <span className={styles.wavingHand}>👋🏻</span></h1>
         <h2>{hero.role}</h2>
         <h3 className={styles.subHeadline}>{hero.subHeadline}</h3>
 
