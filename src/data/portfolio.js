@@ -10,7 +10,7 @@ export const portfolioData = {
             "I’m an AI Engineer and Frontend Developer focused on machine learning with Python and AI-driven automation. I design and build responsive web applications using React and TypeScript, aligning modern frontend development with practical AI to deliver efficient, scalable solutions.",
         socialLinks: {
             github: "https://github.com/Hannanbutt1256/",
-            linkedin: "www.linkedin.com/in/hannan-butt-112b3a24b",
+            linkedin: "https://www.linkedin.com/in/hannan-butt-112b3a24b",
             kaggle: "https://www.kaggle.com/hannanbuttdev",
         },
         resumeLink: "/hannan-butt.pdf", // Assuming file is in public folder
