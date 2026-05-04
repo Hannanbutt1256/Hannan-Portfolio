@@ -19,6 +19,7 @@ export const portfolioData = {
         {
             title: "Fake News Detection System",
             techUsed: ["Python", "ASP.NET", "Scikit-learn", "Pandas"],
+            isFeatured: false,
             description:
                 "Designed a machine learning-based system to detect and classify fake news articles. Developed the backend in ASP.NET and the ML model in Python.",
             links: {
@@ -35,6 +36,16 @@ export const portfolioData = {
             links: {
                 demo: "https://media.licdn.com/dms/document/media/v2/D4D1FAQGV5Jr2M_bmxA/feedshare-document-pdf-analyzed/B4DZsxcYomHwAY-/0/1766061087888?e=1767225600&v=beta&t=P3utlCI9-vdsSEc1WokUmYbcRKbbZpWtQtk__5quLMc",
                 kaggle: "https://www.kaggle.com/code/hannanbuttdev/exploratory-data-analysis-on-real-estate-data"
+            },
+        },
+        {
+            title: "Autonomous Dataset Auditor for ML-Teams",
+            isFeatured: true,
+            techUsed: ["Python", "FastAPI", "GPT-4o-mini", "Azure", "CrewAI", "React"],
+            description:
+                "Built an Autonomous Dataset Auditor using a 9-agent CrewAI system that automatically detects schema issues, bias, leakage, and data quality problems from raw CSVs while generating structured reports and a ready-to-use preprocessing pipeline.",
+            links: {
+                github: "https://github.com/Hannanbutt1256/Autonomous-Dataset-Auditor-for-Machine-Learning-Teams"
             },
         },
         {

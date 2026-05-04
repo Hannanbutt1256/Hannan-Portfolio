@@ -5,7 +5,7 @@ import { portfolioData } from "../../data/portfolio";
 const Education = () => {
     return (
         <section id="education" className={styles.container}>
-            <h1 className="sectionTitle">Education</h1>
+            <h2 className="sectionTitle">Education</h2>
             <div className={styles.grid}>
                 {portfolioData.education.map((edu, index) => (
                     <div key={index} className={styles.card}>
@@ -15,8 +15,10 @@ const Education = () => {
                         <p className={styles.grade}>{edu.grade}</p>
                     </div>
                 ))}
+            </div>
 
-                <h2 className={styles.subTitle}>Certifications</h2>
+            <h2 className="sectionTitle" style={{ marginTop: '4rem' }}>Certifications</h2>
+            <div className={styles.grid}>
                 {portfolioData.certifications.map((cert, index) => (
                     <div key={`cert-${index}`} className={styles.card}>
                         <h3>{cert.title}</h3>

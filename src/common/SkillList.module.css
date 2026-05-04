@@ -1,22 +1,23 @@
 .skillBadge {
     display: inline-block;
     padding: 0.5rem 1.2rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--card-border);
-    backdrop-filter: blur(4px);
-    border-radius: 50px;
-    font-family: 'Inter', sans-serif;
+    background: var(--text-primary);
+    border: 2px solid var(--primary-color);
+    border-radius: 12px;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 1rem;
-    color: var(--text-primary);
-    transition: all 0.3s ease;
+    font-weight: 700;
+    color: var(--background-color);
+    transition: all 0.1s ease;
     cursor: default;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 4px 0px var(--primary-color);
+    text-transform: uppercase;
 }
 
 .skillBadge:hover {
-    background: rgba(100, 108, 255, 0.15);
-    border-color: var(--primary-color);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(100, 108, 255, 0.2);
-    color: #fff;
+    background: var(--primary-color);
+    border-color: var(--text-primary);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--text-primary);
+    color: var(--background-color);
 }

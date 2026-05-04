@@ -5,7 +5,7 @@ import { portfolioData } from "../../data/portfolio";
 const Experience = () => {
     return (
         <section id="experience" className={styles.container}>
-            <h1 className="sectionTitle">Experience</h1>
+            <h2 className="sectionTitle">Experience</h2>
             <div className={styles.experienceList}>
                 {portfolioData.experience.map((exp, index) => (
                     <div key={index} className={styles.card}>

@@ -5,7 +5,7 @@ import { portfolioData } from "../../data/portfolio";
 export default function Skills() {
   return (
     <section id="skills" className={styles.container}>
-      <h1 className="sectionTitle">Skills</h1>
+      <h2 className="sectionTitle">Skills</h2>
       <div className={styles.skillsGrid}>
         {portfolioData.skills.map((category, index) => (
           <div key={index} className={styles.skillCategory}>
