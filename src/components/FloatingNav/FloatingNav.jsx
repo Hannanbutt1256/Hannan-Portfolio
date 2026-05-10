@@ -67,7 +67,7 @@ function FloatingNav() {
           onClick={() => scrollToSection(item.id)}
           title={item.label}
           aria-label={item.label}
-          className="inline-flex items-center gap-2 rounded-pill px-3 py-2 text-text-muted transition hover:bg-glass-hi hover:text-accent"
+          className="inline-flex items-center gap-2 rounded-pill px-3 py-2 text-text-muted transition hover:bg-glass-hi hover:text-text"
         >
           <item.icon />
           <span className="hidden text-sm font-medium sm:inline">

@@ -1,40 +1,58 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #0a0a0b;
-  --color-surface: #111114;
-  --color-surface-2: #17171c;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-border-strong: rgba(255, 255, 255, 0.14);
+  /* Surfaces — deep cool dark, slight blue undertone */
+  --color-bg:            #08080c;
+  --color-surface:       #14141a;
+  --color-surface-2:     #1e1e26;
+  --color-border:        rgba(255, 255, 255, 0.10);
+  --color-border-strong: rgba(255, 255, 255, 0.18);
 
-  --color-glass: rgba(24, 24, 28, 0.55);
-  --color-glass-hi: rgba(36, 36, 42, 0.65);
-  --color-glass-lo: rgba(18, 18, 22, 0.45);
+  /* Glass — near-clear so refraction shows through (this is the iOS 26 trick:
+     the glass is mostly transparent, what sells it is highlights + refraction) */
+  --color-glass:    rgba(255, 255, 255, 0.06);
+  --color-glass-hi: rgba(255, 255, 255, 0.12);
+  --color-glass-lo: rgba(255, 255, 255, 0.04);
 
-  --color-text: #f4f4f5;
-  --color-text-muted: #a1a1aa;
-  --color-text-subtle: #71717a;
+  /* Text */
+  --color-text:        #ffffff;
+  --color-text-muted:  rgba(255, 255, 255, 0.66);
+  --color-text-subtle: rgba(255, 255, 255, 0.42);
 
-  --color-accent: #f5b454;
-  --color-accent-soft: rgba(245, 180, 84, 0.18);
-  --color-accent-ring: rgba(245, 180, 84, 0.45);
-  --color-accent-glow: rgba(245, 180, 84, 0.22);
+  /* Accent — clean white. Primary CTAs are white-on-dark; hover states resolve to
+     full white. Wallpaper provides the color; glass + accent stay monochrome. */
+  --color-accent:      #ffffff;
+  --color-accent-soft: rgba(255, 255, 255, 0.10);
+  --color-accent-ring: rgba(255, 255, 255, 0.40);
+  --color-accent-glow: rgba(255, 255, 255, 0.30);
 
+  /* Typography — unchanged */
   --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans:    "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
 
-  --radius-glass: 20px;
-  --radius-pill: 9999px;
-  --radius-input: 12px;
+  /* Radii — bumped for lozenge / capsule feel (iOS 26 uses generous radii) */
+  --radius-glass: 28px;
+  --radius-pill:  9999px;
+  --radius-input: 16px;
 
+  /* Shadows — multi-layer:
+     1. inset top: bright lens-rim highlight (key liquid-glass cue)
+     2. inset bottom: subtle dim for "weight" / liquid bottom
+     3. inset full ring: barely-there outer glow
+     4. outer close: tight grounding shadow
+     5. outer far:   soft depth shadow */
   --shadow-glass:
-    0 1px 0 0 rgba(255, 255, 255, 0.06) inset,
-    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
-    0 24px 48px -24px rgba(0, 0, 0, 0.65);
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.30),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.20),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 1px 2px rgba(0, 0, 0, 0.30),
+    0 24px 48px -12px rgba(0, 0, 0, 0.50);
   --shadow-glass-hi:
-    0 1px 0 0 rgba(255, 255, 255, 0.10) inset,
-    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
-    0 32px 64px -24px rgba(0, 0, 0, 0.75);
+    inset 0 2px 0 rgba(255, 255, 255, 0.40),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.22),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 2px 4px rgba(0, 0, 0, 0.35),
+    0 32px 64px -16px rgba(0, 0, 0, 0.60);
 }
 
 @layer base {
@@ -65,22 +83,38 @@
 }
 
 @layer components {
+  /* iOS 26 Liquid Glass recipe — five things working together:
+       (a) Specular top arc — radial-gradient on the bg layer
+       (b) Subtle bottom dim — linear-gradient for liquid weight
+       (c) Near-clear base color — lets refraction read
+       (d) backdrop-filter blur+saturate+brightness+url(#liquid-glass)
+           where url() applies feDisplacementMap for true lens refraction
+       (e) Multi-layer box-shadow — bright top inset = lens rim highlight */
   .glass {
-    background-color: var(--color-glass);
-    backdrop-filter: blur(20px) saturate(140%);
-    -webkit-backdrop-filter: blur(20px) saturate(140%);
-    border: 1px solid var(--color-border);
+    position: relative;
+    background:
+      radial-gradient(ellipse 110% 60% at 50% -10%, rgba(255, 255, 255, 0.18), transparent 55%),
+      linear-gradient(180deg, transparent 65%, rgba(0, 0, 0, 0.10)),
+      var(--color-glass);
+    backdrop-filter: blur(16px) saturate(180%) brightness(1.10) url(#liquid-glass);
+    -webkit-backdrop-filter: blur(16px) saturate(180%) brightness(1.10);
+    border: 1px solid transparent;
     border-radius: var(--radius-glass);
     box-shadow: var(--shadow-glass);
   }
   .glass-hi {
-    background-color: var(--color-glass-hi);
+    background:
+      radial-gradient(ellipse 110% 60% at 50% -10%, rgba(255, 255, 255, 0.25), transparent 55%),
+      linear-gradient(180deg, transparent 65%, rgba(0, 0, 0, 0.12)),
+      var(--color-glass-hi);
     box-shadow: var(--shadow-glass-hi);
   }
   .glass-lo {
-    background-color: var(--color-glass-lo);
-    backdrop-filter: blur(14px) saturate(130%);
-    -webkit-backdrop-filter: blur(14px) saturate(130%);
+    background:
+      radial-gradient(ellipse 110% 60% at 50% -10%, rgba(255, 255, 255, 0.10), transparent 55%),
+      var(--color-glass-lo);
+    backdrop-filter: blur(12px) saturate(160%) brightness(1.05);
+    -webkit-backdrop-filter: blur(12px) saturate(160%) brightness(1.05);
   }
   .glass-pill {
     border-radius: var(--radius-pill);
@@ -95,19 +129,25 @@
     font-size: 0.875rem;
     font-weight: 600;
     color: var(--color-text);
-    background-color: var(--color-glass);
-    backdrop-filter: blur(20px) saturate(140%);
-    -webkit-backdrop-filter: blur(20px) saturate(140%);
-    border: 1px solid var(--color-border);
+    background:
+      radial-gradient(ellipse 100% 60% at 50% -10%, rgba(255, 255, 255, 0.22), transparent 55%),
+      var(--color-glass);
+    backdrop-filter: blur(16px) saturate(180%) brightness(1.10);
+    -webkit-backdrop-filter: blur(16px) saturate(180%) brightness(1.10);
+    border: 1px solid transparent;
     border-radius: var(--radius-glass);
     box-shadow: var(--shadow-glass);
-    transition: background-color 200ms ease, transform 200ms ease, filter 200ms ease;
+    transition: transform 200ms ease, filter 200ms ease, box-shadow 200ms ease;
   }
   .btn-glass:hover {
-    background-color: var(--color-glass-hi);
     transform: translateY(-1px);
+    filter: brightness(1.12);
+    box-shadow: var(--shadow-glass-hi);
   }
 
+  /* Primary CTA — white slab with subtle inner gloss, sits confidently on dark.
+     The micro-gradient #ffffff → #e8e8ec gives a tiny "pearl" feel that complements
+     the glass surfaces without competing with the wallpaper colors. */
   .btn-accent {
     display: inline-flex;
     align-items: center;
@@ -117,11 +157,13 @@
     font-size: 0.875rem;
     font-weight: 600;
     border-radius: var(--radius-glass);
-    background: linear-gradient(180deg, rgba(245, 180, 84, 0.95), rgba(245, 180, 84, 0.78));
-    color: #1a1306;
+    background: linear-gradient(180deg, #ffffff, #e8e8ec);
+    color: #08080c;
     box-shadow:
-      0 1px 0 0 rgba(255, 255, 255, 0.4) inset,
-      0 8px 24px -8px var(--color-accent-glow);
+      inset 0 1px 0 rgba(255, 255, 255, 0.60),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.10),
+      0 1px 2px rgba(0, 0, 0, 0.20),
+      0 8px 24px -8px rgba(255, 255, 255, 0.20);
     transition: transform 200ms ease, filter 200ms ease;
   }
   .btn-accent:hover {
@@ -131,7 +173,9 @@
 
   .input-glass {
     width: 100%;
-    background-color: var(--color-glass-lo);
+    background: var(--color-glass-lo);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-input);
     color: var(--color-text);
@@ -143,8 +187,10 @@
   }
   .input-glass:focus {
     outline: none;
-    border-color: var(--color-accent);
-    box-shadow: 0 0 0 3px var(--color-accent-ring);
+    border-color: rgba(255, 255, 255, 0.30);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.20),
+      0 0 0 3px var(--color-accent-ring);
   }
 }
 

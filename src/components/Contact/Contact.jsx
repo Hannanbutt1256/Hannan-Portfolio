@@ -48,7 +48,7 @@ function Contact() {
                 <dd>
                   <a
                     href={`mailto:${hero.email}`}
-                    className="text-text transition hover:text-accent"
+                    className="text-text underline-offset-4 transition hover:text-text hover:underline"
                   >
                     {hero.email}
                   </a>

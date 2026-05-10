@@ -26,7 +26,7 @@ const Experience = () => {
                 </span>
               </div>
 
-              <ul className="mt-5 list-inside list-disc space-y-2 text-text-muted marker:text-accent">
+              <ul className="mt-5 list-inside list-disc space-y-2 text-text-muted marker:text-text-muted">
                 {exp.description.map((point, idx) => (
                   <li key={idx}>{point}</li>
                 ))}

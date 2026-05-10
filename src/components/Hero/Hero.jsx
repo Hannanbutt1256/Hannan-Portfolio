@@ -6,7 +6,6 @@ import ResumePreview from "../ResumePreview/ResumePreview";
 function Hero() {
   const { hero } = portfolioData;
   const [showResume, setShowResume] = useState(false);
-  const [firstName, ...rest] = hero.name.split(" ");
 
   return (
     <section
@@ -19,18 +18,8 @@ function Hero() {
             {hero.subHeadline}
           </span>
 
-          <h1 className="font-display text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-7xl">
-            Hi, I'm{" "}
-            <span
-              className="bg-clip-text text-transparent"
-              style={{
-                backgroundImage:
-                  "linear-gradient(120deg, var(--color-accent) 0%, var(--color-text) 70%)",
-              }}
-            >
-              {firstName}
-            </span>{" "}
-            {rest.join(" ")}
+          <h1 className="font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-7xl">
+            Hi, I'm {hero.name}
           </h1>
 
           <h2 className="font-sans text-lg text-text-muted sm:text-xl">
@@ -59,7 +48,7 @@ function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="grid h-9 w-9 place-items-center rounded-pill text-text-muted transition hover:bg-glass-hi hover:text-accent"
+                className="grid h-9 w-9 place-items-center rounded-pill text-text-muted transition hover:bg-glass-hi hover:text-text"
               >
                 <LinkedInIcon />
               </a>
@@ -68,7 +57,7 @@ function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="grid h-9 w-9 place-items-center rounded-pill text-text-muted transition hover:bg-glass-hi hover:text-accent"
+                className="grid h-9 w-9 place-items-center rounded-pill text-text-muted transition hover:bg-glass-hi hover:text-text"
               >
                 <GithubIcon />
               </a>
@@ -77,7 +66,7 @@ function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Kaggle"
-                className="grid h-9 w-9 place-items-center rounded-pill text-text-muted transition hover:bg-glass-hi hover:text-accent"
+                className="grid h-9 w-9 place-items-center rounded-pill text-text-muted transition hover:bg-glass-hi hover:text-text"
               >
                 <KaggleIcon />
               </a>

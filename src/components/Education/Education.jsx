@@ -16,7 +16,7 @@ const Education = () => {
                 </h3>
                 <p className="mt-1 text-text-muted">{edu.degree}</p>
                 <p className="mt-2 text-xs text-text-subtle">{edu.duration}</p>
-                <span className="glass-lo glass-pill mt-4 inline-block px-3 py-1 text-xs text-accent">
+                <span className="glass-hi glass-pill mt-4 inline-block px-3 py-1 text-xs text-text">
                   {edu.grade}
                 </span>
               </article>
