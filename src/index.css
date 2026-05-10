@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0a0a0b;
+  --color-surface: #111114;
+  --color-surface-2: #17171c;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.14);
+
+  --color-glass: rgba(24, 24, 28, 0.55);
+  --color-glass-hi: rgba(36, 36, 42, 0.65);
+  --color-glass-lo: rgba(18, 18, 22, 0.45);
+
+  --color-text: #f4f4f5;
+  --color-text-muted: #a1a1aa;
+  --color-text-subtle: #71717a;
+
+  --color-accent: #f5b454;
+  --color-accent-soft: rgba(245, 180, 84, 0.18);
+  --color-accent-ring: rgba(245, 180, 84, 0.45);
+  --color-accent-glow: rgba(245, 180, 84, 0.22);
+
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-glass: 20px;
+  --radius-pill: 9999px;
+  --radius-input: 12px;
+
+  --shadow-glass:
+    0 1px 0 0 rgba(255, 255, 255, 0.06) inset,
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 24px 48px -24px rgba(0, 0, 0, 0.65);
+  --shadow-glass-hi:
+    0 1px 0 0 rgba(255, 255, 255, 0.10) inset,
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 32px 64px -24px rgba(0, 0, 0, 0.75);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    min-height: 100dvh;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+  ::selection {
+    background: var(--color-accent-soft);
+    color: var(--color-text);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent-ring);
+    outline-offset: 2px;
+    border-radius: 8px;
+  }
+}
+
+@layer components {
+  .glass {
+    background-color: var(--color-glass);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-glass);
+    box-shadow: var(--shadow-glass);
+  }
+  .glass-hi {
+    background-color: var(--color-glass-hi);
+    box-shadow: var(--shadow-glass-hi);
+  }
+  .glass-lo {
+    background-color: var(--color-glass-lo);
+    backdrop-filter: blur(14px) saturate(130%);
+    -webkit-backdrop-filter: blur(14px) saturate(130%);
+  }
+  .glass-pill {
+    border-radius: var(--radius-pill);
+  }
+
+  .btn-glass {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text);
+    background-color: var(--color-glass);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-glass);
+    box-shadow: var(--shadow-glass);
+    transition: background-color 200ms ease, transform 200ms ease, filter 200ms ease;
+  }
+  .btn-glass:hover {
+    background-color: var(--color-glass-hi);
+    transform: translateY(-1px);
+  }
+
+  .btn-accent {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: var(--radius-glass);
+    background: linear-gradient(180deg, rgba(245, 180, 84, 0.95), rgba(245, 180, 84, 0.78));
+    color: #1a1306;
+    box-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.4) inset,
+      0 8px 24px -8px var(--color-accent-glow);
+    transition: transform 200ms ease, filter 200ms ease;
+  }
+  .btn-accent:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+  }
+
+  .input-glass {
+    width: 100%;
+    background-color: var(--color-glass-lo);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-input);
+    color: var(--color-text);
+    padding: 0.75rem 1rem;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+  }
+  .input-glass::placeholder {
+    color: var(--color-text-subtle);
+  }
+  .input-glass:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-accent-ring);
+  }
+}
+
+@layer utilities {
+  .fade-in-section {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 700ms ease-out, transform 700ms ease-out;
+    will-change: opacity, transform;
+  }
+  .fade-in-section.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in-section {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+}

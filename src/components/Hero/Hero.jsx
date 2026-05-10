@@ -1,51 +1,88 @@
-import React, { useState } from "react";
-import styles from "./HeroStyles.module.css";
-import linkedInIcon from "../../assets/linkedin-dark.svg";
-import githubIcon from "../../assets/github-dark.svg";
-import kaggleIcon from "../../assets/kaggle-dark.svg";
+import { useState } from "react";
 import { portfolioData } from "../../data/portfolio";
+import { GithubIcon, LinkedInIcon, KaggleIcon } from "../../common/icons";
 import ResumePreview from "../ResumePreview/ResumePreview";
 
 function Hero() {
   const { hero } = portfolioData;
   const [showResume, setShowResume] = useState(false);
+  const [firstName, ...rest] = hero.name.split(" ");
 
   return (
-    <section className={styles.container} id="hero">
-      <svg className={styles.aestheticStar} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="var(--primary-color)" stroke="var(--text-primary)" strokeWidth="3" />
-      </svg>
-      <div className={styles.info}>
-        <h1>Hi, I’m <span className={styles.gradientText}>{hero.name}</span> <span className={styles.wavingHand}>👋🏻</span></h1>
-        <h2>{hero.role}</h2>
-        <h3 className={styles.subHeadline}>{hero.subHeadline}</h3>
+    <section
+      id="hero"
+      className="relative flex min-h-[100dvh] items-center px-6 py-24 sm:py-32"
+    >
+      <div className="mx-auto w-full max-w-6xl">
+        <div className="flex flex-col gap-8">
+          <span className="glass glass-pill self-start px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-text-muted">
+            {hero.subHeadline}
+          </span>
 
-        <div className={styles.socials}>
-          <a href={hero.socialLinks.linkedin} target="_blank" rel="noopener noreferrer">
-            <img src={linkedInIcon} alt="LinkedIn" className={styles.icon} />
-          </a>
-          <a href={hero.socialLinks.github} target="_blank" rel="noopener noreferrer">
-            <img src={githubIcon} alt="Github" className={styles.icon} />
-          </a>
-          <a href={hero.socialLinks.kaggle} target="_blank" rel="noopener noreferrer">
-            <img src={kaggleIcon} alt="Kaggle" className={styles.icon} />
-          </a>
-        </div>
+          <h1 className="font-display text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-7xl">
+            Hi, I'm{" "}
+            <span
+              className="bg-clip-text text-transparent"
+              style={{
+                backgroundImage:
+                  "linear-gradient(120deg, var(--color-accent) 0%, var(--color-text) 70%)",
+              }}
+            >
+              {firstName}
+            </span>{" "}
+            {rest.join(" ")}
+          </h1>
 
-        <p className={styles.description}>{hero.summary}</p>
+          <h2 className="font-sans text-lg text-text-muted sm:text-xl">
+            {hero.role}
+          </h2>
 
-        <div className={styles.actions}>
-          <button
-            className={`${styles.btn} hover`}
-            onClick={() => setShowResume(true)}
-          >
-            View Resume
-          </button>
-          <a href="#contact">
-            <button className={`${styles.btn} ${styles.btnOutline} hover`}>
-              Contact Me
+          <p className="max-w-2xl leading-relaxed text-text-muted">
+            {hero.summary}
+          </p>
+
+          <div className="flex flex-wrap items-center gap-4 pt-2">
+            <button
+              type="button"
+              className="btn-accent"
+              onClick={() => setShowResume(true)}
+            >
+              View Resume
             </button>
-          </a>
+            <a href="#contact" className="btn-glass">
+              Contact Me
+            </a>
+
+            <div className="glass glass-pill ml-auto flex items-center gap-1 px-2 py-2 sm:gap-2">
+              <a
+                href={hero.socialLinks.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="grid h-9 w-9 place-items-center rounded-pill text-text-muted transition hover:bg-glass-hi hover:text-accent"
+              >
+                <LinkedInIcon />
+              </a>
+              <a
+                href={hero.socialLinks.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="grid h-9 w-9 place-items-center rounded-pill text-text-muted transition hover:bg-glass-hi hover:text-accent"
+              >
+                <GithubIcon />
+              </a>
+              <a
+                href={hero.socialLinks.kaggle}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Kaggle"
+                className="grid h-9 w-9 place-items-center rounded-pill text-text-muted transition hover:bg-glass-hi hover:text-accent"
+              >
+                <KaggleIcon />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 

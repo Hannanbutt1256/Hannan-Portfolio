@@ -1,45 +1,79 @@
-import React from "react";
-import styles from "./ProjectCard.module.css";
-import githubIcon from "../assets/github-dark.svg";
-import kaggleIcon from "../assets/kaggle-dark.svg";
-import externalIcon from "../assets/external-link-dark.svg";
+import { GithubIcon, KaggleIcon, ExternalLinkIcon } from "./icons";
 
 function ProjectCard({ links, title, description, techUsed, isFeatured = false }) {
   return (
-    <div className={`${styles.card} ${isFeatured ? styles.featured : ""}`}>
-      <div className={styles.cardContent}>
-        <h3>{title}</h3>
-        <p className={styles.description}>{description}</p>
-        <div className={styles.techStack}>
-          {techUsed && techUsed.map((tech, index) => (
-            <span key={index} className={styles.techBadge}>{tech}</span>
-          ))}
-        </div>
+    <article className="glass group flex flex-col gap-4 p-6 transition duration-300 hover:-translate-y-1 hover:[background-color:var(--color-glass-hi)]">
+      <div className="flex items-start justify-between gap-3">
+        <h3 className="font-display text-lg font-semibold">{title}</h3>
+        {isFeatured && (
+          <span className="glass-lo glass-pill px-2.5 py-0.5 text-[10px] uppercase tracking-wider text-accent">
+            Featured
+          </span>
+        )}
       </div>
 
-      <div className={styles.linksContainer}>
+      <p className="text-sm leading-relaxed text-text-muted">{description}</p>
+
+      {techUsed && techUsed.length > 0 && (
+        <div className="mt-1 flex flex-wrap gap-2">
+          {techUsed.map((tech, index) => (
+            <span
+              key={index}
+              className="rounded-pill border border-border bg-glass-lo px-2.5 py-1 text-xs text-text-muted"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      )}
+
+      <div className="mt-auto flex items-center gap-3 pt-2">
         {links?.github && (
-          <a href={links.github} target="_blank" rel="noreferrer" title="GitHub">
-            <img src={githubIcon} alt="GitHub" className={styles.iconBtn} />
+          <a
+            href={links.github}
+            target="_blank"
+            rel="noreferrer"
+            title="GitHub"
+            className="grid h-9 w-9 place-items-center rounded-pill text-text-muted transition hover:bg-glass-hi hover:text-accent"
+          >
+            <GithubIcon size={18} />
           </a>
         )}
         {links?.kaggle && (
-          <a href={links.kaggle} target="_blank" rel="noreferrer" title="Kaggle">
-            <img src={kaggleIcon} alt="Kaggle" className={styles.iconBtn} />
+          <a
+            href={links.kaggle}
+            target="_blank"
+            rel="noreferrer"
+            title="Kaggle"
+            className="grid h-9 w-9 place-items-center rounded-pill text-text-muted transition hover:bg-glass-hi hover:text-accent"
+          >
+            <KaggleIcon size={18} />
           </a>
         )}
         {links?.demo && (
-          <a href={links.demo} target="_blank" rel="noreferrer" title="Live Demo">
-            <img src={externalIcon} alt="Live Demo" className={styles.iconBtn} />
+          <a
+            href={links.demo}
+            target="_blank"
+            rel="noreferrer"
+            title="Live Demo"
+            className="grid h-9 w-9 place-items-center rounded-pill text-text-muted transition hover:bg-glass-hi hover:text-accent"
+          >
+            <ExternalLinkIcon size={18} />
           </a>
         )}
         {links?.site && (
-          <a href={links.site} target="_blank" rel="noreferrer" title="Visit Site">
-            <img src={externalIcon} alt="Visit Site" className={styles.iconBtn} />
+          <a
+            href={links.site}
+            target="_blank"
+            rel="noreferrer"
+            title="Visit Site"
+            className="grid h-9 w-9 place-items-center rounded-pill text-text-muted transition hover:bg-glass-hi hover:text-accent"
+          >
+            <ExternalLinkIcon size={18} />
           </a>
         )}
       </div>
-    </div>
+    </article>
   );
 }
 
