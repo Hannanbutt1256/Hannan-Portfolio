@@ -75,7 +75,7 @@ export const portfolioData = {
         },
         {
             category: "Backend & Database",
-            items: ["ASP.NET", "Firebase", "MS SQL"],
+            items: ["ASP.NET", "Firebase", "MS SQL", "Supabase", "FastAPI", "PostgreSQL", "NeonDB", "DrizzleORM"],
         },
         {
             category: "AI & Data Science",
