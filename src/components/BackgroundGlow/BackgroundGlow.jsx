@@ -51,8 +51,9 @@ function BackgroundGlow() {
             opacity: 0.70,
           }}
         />
+        {/* Hidden on mobile — 5 blurred fixed layers are too heavy for mobile GPUs */}
         <div
-          className="absolute top-[35%] left-[10%] h-[65vh] w-[60vw] rounded-full"
+          className="absolute hidden sm:block top-[35%] left-[10%] h-[65vh] w-[60vw] rounded-full"
           style={{
             background:
               "radial-gradient(circle at center, #1f2840 0%, transparent 65%)",
@@ -62,7 +63,7 @@ function BackgroundGlow() {
           }}
         />
         <div
-          className="absolute top-[40%] right-[5%] h-[60vh] w-[55vw] rounded-full"
+          className="absolute hidden sm:block top-[40%] right-[5%] h-[60vh] w-[55vw] rounded-full"
           style={{
             background:
               "radial-gradient(circle at center, #1c3848 0%, transparent 65%)",
