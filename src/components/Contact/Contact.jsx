@@ -44,19 +44,19 @@ function Contact() {
 
             <dl className="mt-8 space-y-3 text-sm">
               <div className="flex gap-3">
-                <dt className="w-20 text-text-subtle">Email</dt>
-                <dd>
+                <dt className="w-20 shrink-0 text-text-subtle">Email</dt>
+                <dd className="min-w-0 flex-1">
                   <a
                     href={`mailto:${hero.email}`}
-                    className="text-text underline-offset-4 transition hover:text-text hover:underline"
+                    className="break-all text-text underline-offset-4 transition hover:text-text hover:underline"
                   >
                     {hero.email}
                   </a>
                 </dd>
               </div>
               <div className="flex gap-3">
-                <dt className="w-20 text-text-subtle">Location</dt>
-                <dd className="text-text-muted">{hero.location}</dd>
+                <dt className="w-20 shrink-0 text-text-subtle">Location</dt>
+                <dd className="min-w-0 flex-1 text-text-muted">{hero.location}</dd>
               </div>
             </dl>
           </div>

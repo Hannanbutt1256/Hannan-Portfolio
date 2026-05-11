@@ -59,7 +59,12 @@ function FloatingNav() {
   };
 
   return (
-    <nav className="glass glass-pill fixed bottom-6 left-1/2 z-50 flex -translate-x-1/2 items-center gap-1 px-2 py-2">
+    <nav
+      className="glass glass-pill fixed left-1/2 z-50 flex max-w-[calc(100vw-1rem)] -translate-x-1/2 items-center gap-0.5 px-1.5 py-1.5 sm:gap-1 sm:px-2 sm:py-2"
+      style={{
+        bottom: "calc(1rem + env(safe-area-inset-bottom))",
+      }}
+    >
       {navItems.map((item) => (
         <button
           key={item.id}
@@ -67,7 +72,7 @@ function FloatingNav() {
           onClick={() => scrollToSection(item.id)}
           title={item.label}
           aria-label={item.label}
-          className="inline-flex items-center gap-2 rounded-pill px-3 py-2 text-text-muted transition hover:bg-glass-hi hover:text-text"
+          className="inline-flex h-11 min-w-11 items-center justify-center gap-2 rounded-pill px-2.5 text-text-muted transition hover:bg-glass-hi hover:text-text sm:px-3"
         >
           <item.icon />
           <span className="hidden text-sm font-medium sm:inline">
