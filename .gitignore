@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Working/source assets not part of the app
+# (root portrait is duplicated in public/; intro file is raw scratch data)
+/hannan-portrait-removebg-preview.png
+/hannan_intro_carousel_data.md

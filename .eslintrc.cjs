@@ -13,6 +13,10 @@ module.exports = {
   plugins: ['react-refresh'],
   rules: {
     'react/jsx-no-target-blank': 'off',
+    // This is a plain-JS React app that does not use PropTypes (matches the
+    // existing components), so the prop-types/unescaped-entities rules are off.
+    'react/prop-types': 'off',
+    'react/no-unescaped-entities': 'off',
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },

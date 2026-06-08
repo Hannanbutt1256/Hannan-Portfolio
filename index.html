@@ -4,20 +4,21 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#08080c" />
+    <meta name="theme-color" content="#0B0B0C" />
     <meta name="color-scheme" content="dark" />
+    <meta name="description" content="Hannan Butt — AI engineer and AI ad creative director. I build with AI and create with AI." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Outfit for clean geometric headings, Plus Jakarta Sans for body -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
-    <title>Hannan Butt</title>
+    <!-- Anton for display headlines, Inter for everything else -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <title>Hannan Butt — Build &amp; Create</title>
     <style>
       #app-loader {
         position: fixed;
         inset: 0;
         z-index: 9999;
-        background: #08080c;
+        background: #0B0B0C;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -31,13 +32,12 @@
         pointer-events: none;
       }
       .ldr-ring {
-        width: 48px;
-        height: 48px;
+        width: 44px;
+        height: 44px;
         border-radius: 50%;
-        border: 2px solid rgba(255, 255, 255, 0.08);
-        border-top-color: rgba(255, 255, 255, 0.80);
+        border: 1.5px solid rgba(244, 241, 234, 0.10);
+        border-top-color: rgba(244, 241, 234, 0.85);
         animation: ldr-spin 0.75s linear infinite;
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
       }
       @keyframes ldr-spin {
         to { transform: rotate(360deg); }
@@ -46,16 +46,16 @@
         font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
         font-size: 0.7rem;
         font-weight: 600;
-        letter-spacing: 0.2em;
+        letter-spacing: 0.24em;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.28);
+        color: rgba(244, 241, 234, 0.40);
       }
     </style>
   </head>
   <body>
     <div id="app-loader" role="status" aria-label="Loading portfolio">
       <div class="ldr-ring"></div>
-      <span class="ldr-name">Hannan Butt</span>
+      <span class="ldr-name">Hannanlabs</span>
     </div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
