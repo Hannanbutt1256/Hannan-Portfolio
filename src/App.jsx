@@ -1,14 +1,12 @@
 import { useEffect } from "react";
-import Contact from "./components/Contact/Contact";
-import Footer from "./components/Footer/Footer";
-import Hero from "./components/Hero/Hero";
-import Projects from "./components/Projects/Projects";
-import Skills from "./components/Skills/Skills";
-import Experience from "./components/Experience/Experience";
-import Education from "./components/Education/Education";
-import ScrollReveal from "./common/ScrollReveal";
-import FloatingNav from "./components/FloatingNav/FloatingNav";
-import BackgroundGlow from "./components/BackgroundGlow/BackgroundGlow";
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/layout/Layout";
+import Home from "./pages/Home";
+import Work from "./pages/Work";
+import ProjectDetail from "./pages/ProjectDetail";
+import Lab from "./pages/Lab";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 function App() {
   useEffect(() => {
@@ -20,12 +18,9 @@ function App() {
       setTimeout(() => loader.remove(), 550);
     };
 
-    // Safety cap — never block the user for more than 5 s
     const safety = setTimeout(hide, 5000);
-
     if (document.readyState === "complete") {
       clearTimeout(safety);
-      // Small delay so the first paint is composited before we fade out
       setTimeout(hide, 200);
     } else {
       window.addEventListener(
@@ -37,34 +32,21 @@ function App() {
         { once: true }
       );
     }
-
     return () => clearTimeout(safety);
   }, []);
 
   return (
-    <>
-      <BackgroundGlow />
-      <FloatingNav />
-      <main>
-        <Hero />
-        <ScrollReveal delay={0}>
-          <Experience />
-        </ScrollReveal>
-        <ScrollReveal delay={100}>
-          <Projects />
-        </ScrollReveal>
-        <ScrollReveal delay={200}>
-          <Skills />
-        </ScrollReveal>
-        <ScrollReveal delay={300}>
-          <Education />
-        </ScrollReveal>
-        <ScrollReveal delay={400}>
-          <Contact />
-        </ScrollReveal>
-      </main>
-      <Footer />
-    </>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="work" element={<Work />} />
+        <Route path="work/:slug" element={<ProjectDetail />} />
+        <Route path="lab" element={<Lab />} />
+        <Route path="about" element={<About />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="*" element={<Home />} />
+      </Route>
+    </Routes>
   );
 }
 
